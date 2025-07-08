@@ -1,7 +1,7 @@
 <h1 align="center">ByteClient ⚡</h1>
 <p align="center">
   A modern Fabric-based utility client for Minecraft 1.21.5, built with OpenGL rendering, shader support, and modular design.<br>
-  <i>Based on <a href="https://github.com/mioclient/oyvey-ported">mioclient/oyvey-ported</a> — heavily rewritten and expanded</i>
+  <i>Based on <a href="https://github.com/mioclient/byteclient-ported">mioclient/byteclient-ported</a> — heavily rewritten and expanded</i>
 </p>
 
 <p align="center">
