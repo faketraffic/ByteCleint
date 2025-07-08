@@ -16,6 +16,8 @@ import me.bytebase.byteclient.features.modules.player.FastPlace;
 import me.bytebase.byteclient.features.modules.player.NoFall;
 import me.bytebase.byteclient.features.modules.player.Velocity;
 import me.bytebase.byteclient.features.modules.render.BlockHighlight;
+import me.bytebase.byteclient.features.modules.render.ESP;
+import me.bytebase.byteclient.features.modules.render.EntityESP;
 import me.bytebase.byteclient.util.traits.Jsonable;
 import me.bytebase.byteclient.util.traits.Util;
 
@@ -34,6 +36,8 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new HudModule());
         modules.add(new ClickGui());
         modules.add(new Criticals());
+        modules.add(new EntityESP());
+        modules.add(new ESP());
         modules.add(new MCF());
         modules.add(new Step());
         modules.add(new ReverseStep());
