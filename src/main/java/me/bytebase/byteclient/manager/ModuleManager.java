@@ -32,6 +32,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new Criticals());
         modules.add(new AutoCrystal());
         modules.add(new MiddleClickPearl());
+        modules.add(new AutoFish());
 
         //Misc
         modules.add(new MCF());
