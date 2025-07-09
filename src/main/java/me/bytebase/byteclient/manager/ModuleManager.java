@@ -6,16 +6,11 @@ import me.bytebase.byteclient.event.impl.Render2DEvent;
 import me.bytebase.byteclient.event.impl.Render3DEvent;
 import me.bytebase.byteclient.features.Feature;
 import me.bytebase.byteclient.features.modules.Module;
-import me.bytebase.byteclient.features.modules.render.ClickGui;
-import me.bytebase.byteclient.features.modules.render.HudModule;
-import me.bytebase.byteclient.features.modules.combat.Criticals;
-import me.bytebase.byteclient.features.modules.misc.MCF;
-import me.bytebase.byteclient.features.modules.movement.ReverseStep;
-import me.bytebase.byteclient.features.modules.movement.Step;
-import me.bytebase.byteclient.features.modules.player.FastPlace;
-import me.bytebase.byteclient.features.modules.player.NoFall;
-import me.bytebase.byteclient.features.modules.player.Velocity;
-import me.bytebase.byteclient.features.modules.render.BlockHighlight;
+import me.bytebase.byteclient.features.modules.render.*;
+import me.bytebase.byteclient.features.modules.combat.*;
+import me.bytebase.byteclient.features.modules.misc.*;
+import me.bytebase.byteclient.features.modules.movement.*;
+import me.bytebase.byteclient.features.modules.player.*;
 import me.bytebase.byteclient.util.traits.Jsonable;
 import me.bytebase.byteclient.util.traits.Util;
 
@@ -52,6 +47,8 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new BlockHighlight());
         modules.add(new HudModule());
         modules.add(new ClickGui());
+        //modules.add(new EntityESP());
+        modules.add(new ESP());
     }
 
     public Module getModuleByName(String name) {
