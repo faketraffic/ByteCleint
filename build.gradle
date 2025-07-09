@@ -27,10 +27,10 @@ dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    implementation 'org.json:json:20230618'
-        // Fabric API. This is technically optional, but you probably want it anyway.
+    implementation 'org.json:json:20250517'
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation files('src/main/resources/builtinmods/IAS-Fabric-1.21.5-9.0.4.jar')
+    modImplementation files('src/main/resources/builtinmods/Marlow\'s Crystal Optimizer-1.21.5-1.0.3.jar')
 }
 
 processResources {
