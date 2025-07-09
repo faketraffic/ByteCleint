@@ -1,4 +1,4 @@
-package me.bytebase.byteclient.features.modules.client;
+package me.bytebase.byteclient.features.modules.render;
 
 import me.bytebase.byteclient.ByteClient;
 import me.bytebase.byteclient.event.impl.Render2DEvent;
@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class HudModule extends Module {
     public HudModule() {
-        super("Hud", "hud", Category.CLIENT, true, false, false);
+        super("Hud", "hud", Category.RENDER, true, false, false);
     }
 
     @Override

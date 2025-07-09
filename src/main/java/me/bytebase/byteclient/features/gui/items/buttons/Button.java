@@ -4,7 +4,7 @@ import me.bytebase.byteclient.ByteClient;
 import me.bytebase.byteclient.features.gui.Component;
 import me.bytebase.byteclient.features.gui.ByteClientGui;
 import me.bytebase.byteclient.features.gui.items.Item;
-import me.bytebase.byteclient.features.modules.client.ClickGui;
+import me.bytebase.byteclient.features.modules.render.ClickGui;
 import me.bytebase.byteclient.util.render.RenderUtil;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;

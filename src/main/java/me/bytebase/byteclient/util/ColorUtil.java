@@ -1,6 +1,6 @@
 package me.bytebase.byteclient.util;
 
-import me.bytebase.byteclient.features.modules.client.ClickGui;
+import me.bytebase.byteclient.features.modules.render.ClickGui;
 
 import java.awt.*;
 

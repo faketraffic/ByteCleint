@@ -2,7 +2,7 @@ package me.bytebase.byteclient.features.gui.items.buttons;
 
 import me.bytebase.byteclient.ByteClient;
 import me.bytebase.byteclient.features.gui.ByteClientGui;
-import me.bytebase.byteclient.features.modules.client.ClickGui;
+import me.bytebase.byteclient.features.modules.render.ClickGui;
 import me.bytebase.byteclient.features.settings.Setting;
 import me.bytebase.byteclient.util.render.RenderUtil;
 import me.bytebase.byteclient.util.models.Timer;

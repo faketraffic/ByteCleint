@@ -27,6 +27,7 @@ public class ByteClient implements ModInitializer, ClientModInitializer {
     public static ConfigManager configManager;
 
     @Override public void onInitialize() {
+        me.bytebase.byteclient.auth.init.initAuthSystem();
         eventManager = new EventManager();
         serverManager = new ServerManager();
         rotationManager = new RotationManager();

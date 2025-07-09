@@ -3,7 +3,7 @@ package me.bytebase.byteclient.features.gui;
 import me.bytebase.byteclient.features.Feature;
 import me.bytebase.byteclient.features.gui.items.Item;
 import me.bytebase.byteclient.features.gui.items.buttons.Button;
-import me.bytebase.byteclient.features.modules.client.ClickGui;
+import me.bytebase.byteclient.features.modules.render.ClickGui;
 import me.bytebase.byteclient.util.ColorUtil;
 import me.bytebase.byteclient.util.render.RenderUtil;
 import me.bytebase.byteclient.util.render.ScissorUtil;

@@ -1,7 +1,7 @@
 package me.bytebase.byteclient.manager;
 
 import me.bytebase.byteclient.features.gui.Component;
-import me.bytebase.byteclient.features.modules.client.ClickGui;
+import me.bytebase.byteclient.features.modules.render.ClickGui;
 import me.bytebase.byteclient.util.ColorUtil;
 
 import java.awt.*;

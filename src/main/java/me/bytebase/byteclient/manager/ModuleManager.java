@@ -6,8 +6,8 @@ import me.bytebase.byteclient.event.impl.Render2DEvent;
 import me.bytebase.byteclient.event.impl.Render3DEvent;
 import me.bytebase.byteclient.features.Feature;
 import me.bytebase.byteclient.features.modules.Module;
-import me.bytebase.byteclient.features.modules.client.ClickGui;
-import me.bytebase.byteclient.features.modules.client.HudModule;
+import me.bytebase.byteclient.features.modules.render.ClickGui;
+import me.bytebase.byteclient.features.modules.render.HudModule;
 import me.bytebase.byteclient.features.modules.combat.Criticals;
 import me.bytebase.byteclient.features.modules.misc.MCF;
 import me.bytebase.byteclient.features.modules.movement.ReverseStep;
@@ -31,16 +31,27 @@ public class ModuleManager implements Jsonable, Util {
     public List<String> sortedModulesABC = new ArrayList<>();
 
     public void init() {
-        modules.add(new HudModule());
-        modules.add(new ClickGui());
+        //Client
+
+        //Combat
         modules.add(new Criticals());
+
+        //Misc
         modules.add(new MCF());
+
+        //Movement
         modules.add(new Step());
         modules.add(new ReverseStep());
+
+        //Player
         modules.add(new FastPlace());
         modules.add(new Velocity());
-        modules.add(new BlockHighlight());
         modules.add(new NoFall());
+
+        //Render
+        modules.add(new BlockHighlight());
+        modules.add(new HudModule());
+        modules.add(new ClickGui());
     }
 
     public Module getModuleByName(String name) {

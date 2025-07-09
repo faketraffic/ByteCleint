@@ -1,4 +1,4 @@
-package me.bytebase.byteclient.features.modules.client;
+package me.bytebase.byteclient.features.modules.render;
 
 import com.google.common.eventbus.Subscribe;
 import me.bytebase.byteclient.ByteClient;
@@ -29,7 +29,7 @@ public class ClickGui
     private ByteClientGui click;
 
     public ClickGui() {
-        super("ClickGui", "Opens the ClickGui", Module.Category.CLIENT, true, false, false);
+        super("ClickGui", "Opens the ClickGui", Module.Category.RENDER, true, false, false);
         setBind(GLFW.GLFW_KEY_RIGHT_SHIFT);
         rainbowHue.setVisibility(v -> rainbow.getValue());
         rainbowBrightness.setVisibility(v -> rainbow.getValue());
