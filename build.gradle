@@ -13,6 +13,9 @@ repositories {
     // See https://docs.gradle.org/current/userguide/declaring_repositories.html
     // for more information about repositories.
     mavenCentral()
+    flatDir {
+        dirs 'src/main/resources/builtinmods'
+    }
 }
 
 loom {
@@ -27,6 +30,7 @@ dependencies {
     implementation 'org.json:json:20230618'
         // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation files('src/main/resources/builtinmods/IAS-Fabric-1.21.5-9.0.4.jar')
 }
 
 processResources {
