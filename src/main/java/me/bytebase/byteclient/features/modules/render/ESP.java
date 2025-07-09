@@ -14,7 +14,10 @@ public class ESP extends Module {
     public ESP() {
         super("ESP", "Highlights players and other entities.", Category.RENDER, true, false, false);
     }
-
+    /**
+     * @author Tharmsy
+     * @since 07/9/2025
+     */
     @Subscribe
     public void onRender3D(Render3DEvent event) {
         if (mc.world == null) return;
@@ -22,7 +25,7 @@ public class ESP extends Module {
         for (Entity entity : mc.world.getEntities()) {
             if (entity instanceof PlayerEntity && entity != mc.player) {
                 Box box = entity.getBoundingBox();
-                RenderUtil.drawBox(event.getMatrix(), box, Color.ORANGE, 1f);
+                RenderUtil.drawBox(event.getMatrix(), box, Color.GREEN, 1f);
             }
         }
     }
