@@ -8,8 +8,10 @@ import me.bytebase.byteclient.util.models.Timer;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -27,7 +29,7 @@ import java.util.stream.StreamSupport;
  * @since 07/9/2025
  */
 public class AutoCrystal extends Module {
-
+// todo fix placeing not needed rn
     private final Setting<Boolean> place = this.register(new Setting<>("Place", true));
     private final Setting<Boolean> breakCrystals = this.register(new Setting<>("Break", true));
     private final Setting<Float> placeRange = this.register(new Setting<>("PlaceRange", 4.5f, 1.0f, 6.0f));
@@ -85,22 +87,32 @@ public class AutoCrystal extends Module {
                 .min(Comparator.comparing(player -> mc.player.distanceTo(player)))
                 .orElse(null);
 
-        if (target == null) {
-            return false;
-        }
+        if (target == null) return false;
 
         BlockPos bestPos = findBestPlacePos(target);
+        if (bestPos == null) return false;
 
-        if (bestPos != null) {
-            Hand hand = mc.player.getOffHandStack().getItem() == Items.END_CRYSTAL ? Hand.OFF_HAND : Hand.MAIN_HAND;
-            if (mc.player.getOffHandStack().getItem() == Items.END_CRYSTAL || mc.player.getMainHandStack().getItem() == Items.END_CRYSTAL) {
-                BlockHitResult result = new BlockHitResult(new Vec3d(bestPos.getX() + 0.5, bestPos.getY() + 1.0, bestPos.getZ() + 0.5), Direction.UP, bestPos, false);
-                mc.interactionManager.interactBlock(mc.player, hand, result);
+        if (mc.player.squaredDistanceTo(Vec3d.ofCenter(bestPos)) > 25.0) return false;
+
+        ItemStack main = mc.player.getMainHandStack();
+        ItemStack off = mc.player.getOffHandStack();
+
+        Hand hand = null;
+        if (main.getItem() == Items.END_CRYSTAL) hand = Hand.MAIN_HAND;
+        else if (off.getItem() == Items.END_CRYSTAL) hand = Hand.OFF_HAND;
+
+        if (hand != null) {
+            BlockHitResult hit = new BlockHitResult(Vec3d.ofCenter(bestPos), Direction.UP, bestPos, false);
+            ActionResult result = mc.interactionManager.interactBlock(mc.player, hand, hit);
+            if (result.isAccepted()) {
+                mc.player.swingHand(hand);
                 return true;
             }
         }
+
         return false;
     }
+
 // doesnt work
     private BlockPos findBestPlacePos(PlayerEntity target) {
         List<BlockPos> placeableBlocks = findPlaceableBlocks();
