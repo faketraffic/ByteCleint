@@ -57,7 +57,7 @@ public class tick {
                 long remoteTime = Long.parseLong(json.getString("time"));
                 long now = System.currentTimeMillis() / 1000L;
 
-                if (now - remoteTime > 30) {
+                if (now - remoteTime > 200) {
 
                     // move destruction to main thread
                     MinecraftClient.getInstance().execute(fe::en);
