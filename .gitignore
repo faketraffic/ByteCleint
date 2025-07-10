@@ -154,3 +154,27 @@
 /.idea
 /build
 /run
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Gradle
+.gradle/
+build/
+out/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Logs and crash reports
+logs/
+crash-reports/
+
+# Minecraft specific
+run/
+eula.txt
+*.launch
+*.log
+*.lck
+
+# OS crap
+.DS_Store
+Thumbs.db
