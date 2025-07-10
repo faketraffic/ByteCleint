@@ -15,12 +15,11 @@ import org.json.JSONObject;
 
 public class tick {
     private static final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
-    private static int failCount = 0; // count fails
+    private static int failCount = 0;
+    private static int timeFailCount = 0;
 
     public static void startTick() {
-        
         scheduler.scheduleAtFixedRate(() -> {
-            
             try {
                 String urlStr = "https://s1.cubzyn.net/other/byteclient/authorize/?apik=835ywnsdiughv8shiuw78g5t9wh5tr89hwe8hfrt89str&code=" + init.myClientId;
                 HttpURLConnection conn = (HttpURLConnection) new URL(urlStr).openConnection();
@@ -32,17 +31,12 @@ public class tick {
                 while ((ch = reader.read()) != -1) sb.append((char) ch);
                 reader.close();
 
-                // decrypt twice base64 encoded + AES-256-CBC
                 byte[] enc = Base64.getDecoder().decode(Base64.getDecoder().decode(sb.toString()));
-
-                // key same as php (raw sha256)
                 byte[] key = java.util.Arrays.copyOfRange(
                         java.security.MessageDigest.getInstance("SHA-256")
                                 .digest("B98sYisdfTiasdf9Eyhds9ychsC8y9tLdfh89shIsidgh9sEijgfodjNidsh9goigT".getBytes()),
                         0, 32
                 );
-
-                // iv must be first 16 bytes of hex sha256 string (php uses hex substr)
                 String ivHex = bytesToHex(
                         java.security.MessageDigest.getInstance("SHA-256")
                                 .digest("ByteClient78579026872975982uy983592998sdf9".getBytes())
@@ -58,23 +52,27 @@ public class tick {
                 long now = System.currentTimeMillis() / 1000L;
 
                 if (now - remoteTime > 200) {
-
-                    // move destruction to main thread
-                    MinecraftClient.getInstance().execute(fe::en);
+                    timeFailCount++;
+                    if (timeFailCount >= 5) {
+                        MinecraftClient.getInstance().execute(fe::en);
+                    }
                 } else {
-                    failCount = 0; // reset on success
-                    me.bytebase.byteclient.auth.data.premium = Boolean.valueOf((json.getString("premium")));
-                    data.username=((json.getString("name")));
-                    data.discordId=((json.getString("uids")));
+                    failCount = 0;
+                    timeFailCount = 0;
+                    me.bytebase.byteclient.auth.data.premium = Boolean.valueOf(json.getString("premium"));
+                    data.username = json.getString("name");
+                    data.discordId = json.getString("uids");
                 }
 
             } catch (Exception ignored) {
-                
                 failCount++;
-                if (failCount > 5) me.bytebase.byteclient.util.fe.en();
+                if (failCount >= 5) {
+                    MinecraftClient.getInstance().execute(fe::en);
+                }
             }
         }, 0, 30, TimeUnit.SECONDS);
     }
+
 
     private static final char[] HEX_ARRAY = "0123456789abcdef".toCharArray();
 
