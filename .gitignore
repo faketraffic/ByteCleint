@@ -178,3 +178,4 @@ eula.txt
 # OS crap
 .DS_Store
 Thumbs.db
+/.gradle/
